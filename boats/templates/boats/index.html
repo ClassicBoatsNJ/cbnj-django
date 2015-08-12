@@ -1,0 +1,365 @@
+{% extends 'boats/base.html' %}  
+{% block body %}
+{% load staticfiles %}
+   <!-- Header
+   =================================================== -->
+   <header id="main-header">
+
+   	<div class="row header-inner">
+
+	      <div class="logo">
+	         <a class="smoothscroll" href="#hero">ClassicBoatsNJ</a>
+	      </div>
+
+	      <nav id="nav-wrap">         
+	         
+	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
+	         	<span class='menu-text'>Show Menu</span>
+	         	<span class="menu-icon"></span>
+	         </a>
+         	<a class="mobile-btn" href="#" title="Hide navigation">
+         		<span class='menu-text'>Hide Menu</span>
+         		<span class="menu-icon"></span>
+         	</a>         
+
+	         <ul id="nav" class="nav">
+	            <li class="current"><a class="smoothscroll" href="#hero">Home.</a></li>
+	            <li><a class="smoothscroll" href="#boats">Boats.</a></li>
+		        <li><a class="smoothscroll" href="#services">Services.</a></li>
+		        <li><a href="/blog">Blog.</a></li>
+	            <li><a class="smoothscroll" href="#about">About.</a></li>
+	            <li><a class="smoothscroll" href="#contact">Contact.</a></li> 
+	         </ul> 
+
+	      </nav> <!-- /nav-wrap -->	      
+
+	   </div> <!-- /header-inner -->
+
+   </header> 
+
+
+   <!-- Hero
+   =================================================== -->
+   <section id="hero">	
+   	  
+		<div class="row hero-content">
+
+			<div class="twelve columns flex-container">
+
+			   <div id="hero-slider" class="flexslider">
+
+				   <ul class="slides">
+
+					   <!-- Slide -->
+					   <li>
+						   <div class="flex-caption">
+								<h1>Sales</h1>	
+								<p><a class="button stroke smoothscroll" href="#boats">Inventory</a></p>																   
+							</div>						
+					   </li>
+
+					   <!-- Slide -->
+					   <li>						
+							<div class="flex-caption">
+								<h1>Consulting</h1>	
+								<p><a class="button stroke smoothscroll" href="#services">Our Services</a></p>									   
+							</div>					
+					   </li>
+
+					   <!-- Slide -->
+					   <li>
+						   <div class="flex-caption">
+								<h1>Restoration Services</h1>
+								<p><a class="button stroke smoothscroll" href="#contact">Contact Us</a></p>										   
+							</div>
+					   </li>					              
+
+				   </ul>
+
+			   </div> <!-- .flexslider -->				   
+
+	      </div> <!-- .flex-container -->      
+
+		</div> <!-- .hero-content -->	   
+
+   </section> <!-- #hero -->
+
+
+   <!-- Portfolio
+   ================================================== -->
+   <section id="boats">
+
+      <div class="row section-head">
+
+      	<div class="twelve columns">
+
+	         <h1>Boats For Sale<span>.</span></h1>
+
+	         <hr />
+
+	         <p>The mission of ClassicBoatsNJ is to encourage the preservation and use of stylish, antique and classic boats. We specialize in the sale and purchase of all types of boats and offer consultation services. Located at the head of Barnegat Bay in Ocean County, New Jersey, ClassicBoatsNJ is the source for the discriminating boater. 
+	         </p>
+
+	      </div>
+
+      </div>
+
+      <div class="row items">
+
+      	<div class="twelve columns">
+
+            <div id="boats-wrapper" class="bgrid-fourth s-bgrid-fourth mob-bgrid-half group">
+            {% for boat in boats %}
+          	   <div class="bgrid item">
+                  <div class="item-wrap">
+
+                     <a href="/boats/{{ boat.url_name }}">
+                            <img src="{{ boat.main_image.url }}" alt="{{ boat.nice_name }}">
+                                <div class="overlay"></div>                       
+                                    <div class="boats-item-meta">
+          					            <h5>{{ boat.nice_name }}</h5>
+                                        <p>{% for subtitle_item in boat.get_subtitle_list %}{{ subtitle_item }}{% if forloop.last %}{% else %} | {% endif %}{% endfor %}</p>
+          					        </div>                         
+                     </a>
+          		  </div> <!-- /item -->
+          		</div> <!-- /item -->
+                   
+            {% endfor %}
+            </div> <!-- /portfolio-wrapper -->
+
+         </div> <!-- /twelve -->
+
+      </div>  <!-- /row -->
+      
+   </section> <!-- /Portfolio -->
+
+
+   <!-- Services Section
+   ================================================== -->
+   <section id="services">
+
+   	<div class="row section-head">
+
+   		<div class="twelve columns">
+
+	         <h1>Our Services<span>.</span></h1>
+
+	         <hr />
+
+         </div>
+
+      </div>
+
+      <div class="row">
+
+      	<div class="twelve columns">
+
+	      	<div class="service-list bgrid-third s-bgrid-half mob-bgrid-whole">
+
+	      		<div class="bgrid">
+
+	               <div class="icon-part">
+	               	<span class="icon-anchor"></span>
+	               </div>
+
+	               <h3>Sales.</h3>
+
+	               <div class="service-content">	                  
+		               <p>We specialize in the sale of classic boats, motor and sail. We have connected many boating enthusiasts with well-loved vessels. How about a cruise for a lunch picnic or cocktails, or a trusted tow boat to get you to the races?
+	         			</p> 
+	               </div>      
+
+	            </div> <!-- /bgrid -->
+
+				   <div class="bgrid">
+
+	              	<div class="icon-part">
+	               	<i class="icon-question"></i>
+	               </div>
+
+	               <h3>Consulting.</h3>                  
+
+	               <div class="service-content">	                  
+		               <p>In addition to buying, selling, chartering and restoring wooden boats, ClassicBoatsNJ offers consultation services and sound advice. These services are not limited to our customers, but extended to anyone who shares our passion for wooden boats. Our areas of expertise include cruisers, sailboats, sport skiffs, speedboats and live-aboards manufactured by top-of-the-line boat builders.
+	         			</p> 
+	               </div>                                 
+
+	            </div> <!-- /bgrid -->
+
+				   <div class="bgrid">
+
+	              	<div class="icon-part">	               	
+	               	<i class="icon-heart"></i>
+	               </div>
+
+	               <h3>Restoration.</h3>
+
+	               <div class="service-content">		                  
+		               <p>ClassicBoatsNJ is well acquainted with carpenters and craftspeople in New Jersey who are experts in the field of wooden boat restoration and repair. Whether your boat requires minor repair and restoration work or a complete overhaul, we will connect you with the specialist who will return your wooden or fiberglass boat to its original, seaworthy condition. 
+	         			</p> 
+	               </div>                                                     
+
+	            </div> <!-- /bgrid -->
+
+	      	</div> <!-- /service-list -->
+
+	      </div> <!-- /twelve -->
+
+      </div> <!-- /row -->      
+
+   </section> <!-- /services -->   
+
+
+   <!-- About Section
+   ================================================== -->
+
+   <section id="about">
+
+	      <div class="row team section-head">
+
+	   		<div class="twelve columns">
+
+		         <h1>About Us<span>.</span></h1>
+
+		         <hr />
+
+		         <p>Established by Bob O'Brien of Bay Head, New Jersey, ClassicBoatsNJ has helped to spread enthusiasm about wooden boats since 1993. After years as a classic yacht owner, Bob passed away in 2013, leaving ClassicBoatsNJ to his son, Bill O'Brien, who shares Bob's passion for keeping classic boats on Barnegat Bay.
+		         </p>	         
+
+		      </div>
+
+	      </div>
+
+      	<div class="row about-content">
+
+      		<div class="twelve columns">
+
+		         <div id="team-wrapper" class="bgrid-half mob-bgrid-whole group">
+
+		            <div class="bgrid member">
+
+		               <div class="member-header">
+
+		                 	<div class="member-pic">
+									<img src="{% static "boats/images/team/Dad1sq.jpg" %}" alt=""/>                        	                       	
+		                 	</div>
+
+		                  <div class="member-name">
+		                     <h3>Bill O'Brien</h3>
+		                     <span>Owner</span>
+		                  </div>
+
+		               </div>							
+
+		              
+
+		          	</div> <!-- /member -->
+                <div class="bgrid member">
+                   <p>Bill is an avid classic boat enthusiast and owner who has enjoyed wooden boats since his childhood. Bill operates in the Barnegat Bay area and is extremely knowledgeable about classic and wooden boats.</p>
+                </div>
+                <!-- /member -->
+
+		            <!-- /member -->
+
+		             <!-- /member -->
+
+		         </div> <!-- /twelve -->
+
+	         </div> <!-- /team-wrapper -->
+
+         </div> <!-- /row -->
+
+      </div> <!-- /team -->           
+
+   </section> <!-- /about -->
+
+   <!-- Contact Section
+   ================================================== -->
+   <section id="contact">
+
+   	<div class="row section-head">
+
+   		<div class="twelve columns">
+
+	         <h1>Get In Touch<span>.</span></h1>
+
+	         <hr />
+
+	         <p>We'd love to chat with you about buying or selling a boat. If you see something you like or have any questions, let us know and we'll get right back to you.
+	         </p>
+           <p>Send a message or call Bill at (908)591-1083.</p>
+
+	      </div>
+
+      </div>
+
+      <div class="row form-section">
+      	
+      	<div id="contact-form" class="twelve columns">
+
+            <form name="contactForm" id="contactForm" method="post" action="">
+                {% csrf_token %}
+
+      			<fieldset>
+
+                  <div class="row">
+
+	                  <div class="six columns mob-whole">
+                        {{ form.first_name.label_tag }}
+                          {{ form.first_name }}
+	                  </div>
+
+	                  <div class="six columns mob-whole">	
+                        {{ form.last_name.label_tag }}
+                          {{ form.last_name }}
+	                  </div>	                        
+
+                  </div>
+
+                  <div class="row">
+
+	                  <div class="six columns mob-whole">	
+                        {{ form.email.label_tag }}
+                          {{ form.email }}
+	                  </div>
+
+	                  <div class="six columns mob-whole">	 
+                        {{ form.subject.label_tag }}
+                          {{ form.subject }}
+	                  </div>
+
+                  </div>
+
+                  <div class="row">
+
+	                  <div class="twelve columns">
+                        {{ form.message.label_tag }}
+                          {{ form.message }}
+	                  </div>
+
+                  </div>
+
+                  <div>
+                     <button class="submit full-width">Send Message</button>
+                     <div id="image-loader">
+                        <img src="{% static "boats/images/loader.gif" %}" alt="" />
+                     </div>
+                  </div>
+
+      			</fieldset>
+      				
+      		</form> <!-- /contactForm -->
+
+
+            <!-- message box -->
+            <div id="message-warning"></div>
+            <div id="message-success">
+               <i class="fa fa-check"></i>Your message was sent, thank you!<br />
+    			</div>
+
+         </div> <!-- /contact-form -->      	
+
+      </div> <!-- /form-section -->     
+
+   </section>  <!-- /contact-->
+{% endblock %}

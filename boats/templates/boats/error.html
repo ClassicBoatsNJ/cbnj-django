@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block body %}
+   <!-- Header
+   =================================================== -->
+   <header id="main-header">
+
+   	<div class="row header-inner">
+
+	      <div class="logo">
+	         <a href="/">ClassicBoatsNJ - 404</a>
+	      </div>
+
+	      <nav id="nav-wrap">         
+	         
+	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
+	         	<span class='menu-text'>Show Menu</span>
+	         	<span class="menu-icon"></span>
+	         </a>
+         	<a class="mobile-btn" href="#" title="Hide navigation">
+         		<span class='menu-text'>Hide Menu</span>
+         		<span class="menu-icon"></span>
+         	</a>         
+
+            <ul id="nav" class="nav">
+               <li class="current"><a class="" href="/#boats">Boats.</a></li>
+               <li><a href="/#services">Services.</a></li>
+               <li><a href="/#about">About.</a></li>
+               <li><a href="/#contact">Contact.</a></li>              
+            </ul> 
+
+	      </nav> <!-- /nav-wrap -->	      
+
+	   </div> <!-- /header-inner -->
+
+   </header>
+
+
+   <!-- Page Title
+   ================================================== -->
+   <section id="four-oh-four">	
+   	  
+		<div class="row">
+
+			<div class="twelve columns">
+
+			{% block message %}
+            {% endblock %}	
+
+			</div>			    
+
+		</div> <!-- /row -->	   
+
+   </section> <!-- /page-title -->
+
+{% endblock %}

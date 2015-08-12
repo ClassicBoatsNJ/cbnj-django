@@ -1,0 +1,6 @@
+media/
+local_settings.py
+*.pyc
+*.swp
+*.swo
+*.sqlite3

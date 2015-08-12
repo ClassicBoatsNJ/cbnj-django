@@ -1,0 +1,141 @@
+{% extends 'boats/base.html' %}
+{% block body %}
+   <!-- Header
+   =================================================== -->
+   <header id="main-header">
+
+   	<div class="row header-inner">
+
+	      <div class="logo">
+	         <a href="/">ClassicBoatsNJ</a>
+	      </div>
+
+	      <nav id="nav-wrap">         
+	         
+	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
+	         	<span class='menu-text'>Show Menu</span>
+	         	<span class="menu-icon"></span>
+	         </a>
+         	<a class="mobile-btn" href="#" title="Hide navigation">
+         		<span class='menu-text'>Hide Menu</span>
+         		<span class="menu-icon"></span>
+         	</a>         
+
+            <ul id="nav" class="nav">
+               <li class="current"><a href="/#hero">Home.</a></li>
+               <li><a href="/#boats">Boats.</a></li>
+               <li><a href="/#services">Services.</a></li>
+               <li><a href="/blog">Blog.</a></li>
+               <li><a href="/#about">About.</a></li>
+               <li><a href="/#contact">Contact.</a></li>              
+            </ul> 
+
+	      </nav> <!-- /nav-wrap -->	      
+
+	   </div> <!-- /header-inner -->
+
+   </header>
+
+
+   <!-- Page Title
+   ================================================== -->
+   <section id="page-title">	
+   	  
+		<div class="row">
+
+			<div class="twelve columns">
+
+				<h1>Inventory<span>.</span></h1>
+				
+
+			</div>			    
+
+		</div> <!-- /row -->	   
+
+   </section> <!-- /page-title -->
+
+
+   <!-- Content
+   ================================================== -->
+   <section id="content">
+
+   	<div class="row portfolio-content">
+
+	   	<div class="entry tab-whole nine columns centered">
+
+	         <header class="entry-header">
+
+					<h1 class="entry-title">
+							{{ boat.nice_name }}
+					</h1> 				 
+						
+					<div class="entry-meta">
+						<ul>
+                            {% for subtitle_item in boat.get_subtitle_list %}
+							<li>{{subtitle_item}}</li>
+                                {% if forloop.last %}
+                                {% else %}
+							    <span class="meta-sep">•</span>
+							    {% endif %}
+                            {% endfor %}
+						</ul>
+					</div> 
+					<hr>	 
+				</header>
+
+				<div class="entry-content">
+					<p class="lead">{{ boat.post_text }}</p>
+				</div>
+
+				<div class="entry-content-media">
+					<div class="post-thumb">
+                        {% for image in boat.image_set.all %}
+						<img src="{{ image.image_file.url }}">
+                        {% endfor %}
+					</div> 
+				</div> 					 
+
+				<div class="pagenav group">
+		  			  <span class="prev"><a href="/boats/{{previous_url}}" rel="prev">Previous</a></span>
+		  			<span class="next"><a href="/boats/{{next_url}}" rel="next">Next</a></span>  				   
+	  			</div>  										   
+	         
+	      </div> <!-- /entry -->	      
+
+	   </div> <!-- /portfolio-content -->
+	   
+
+		<div class="row more-projects">
+
+		   <h1>More Boats.</h1> 
+
+			<div class="tab-whole nine columns centered">
+
+            <div id="boats-wrapper" class="bgrid-half tab-bgrid-halfgroup">
+            {% for ship in four_random_boats %}
+               <div class="bgrid item">
+                  <div class="item-wrap">
+
+                     <a href="/boats/{{ship.url_name}}">
+                        <img src="{{ ship.main_image.url }}" alt="{{ship.nice_name}}">
+                        <div class="overlay">
+                           <div class="boats-item-meta">
+                              <h5>{{ship.nice_name}}</h5>
+                                <p>{% for subtitle_item in ship.get_subtitle_list %}{{ subtitle_item }}{% if forloop.last %}{% else %} | {% endif %}{% endfor %}</p>
+                           </div>
+                        </div>                        
+                     </a>
+
+                  </div>
+               </div> <!-- /item -->
+            {% endfor %} 
+
+
+	         </div> <!-- /portfolio-wrapper -->
+
+	      </div> <!-- /nine -->
+
+		</div> <!-- /more-projects --> 
+
+   </section> <!-- /content -->  
+{% endblock %}
