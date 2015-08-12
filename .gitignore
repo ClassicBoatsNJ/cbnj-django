@@ -1,4 +1,5 @@
 media/
+venv/
 local_settings.py
 *.pyc
 *.swp
