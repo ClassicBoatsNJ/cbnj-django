@@ -20,9 +20,9 @@ def index(request):
             lines.append("\nMessage:\n%s" % form.cleaned_data['message'])
 
             body = "\n".join(lines)
-            emails = ["tmh.2790@gmail.com"]
+            emails = ["foamranger@verizon.net", "ellieob@gmail.com", "tmh.2790@gmail.com"]
             try:
-                send_mail(subject, body, "classicboatsnj@gmail.com", emails)
+                send_mail(subject, body, "Boat Bot classicboatsnj@gmail.com", emails)
             except:
                 return HttpResponse("Mail server error.<br />Please try again later.")
             return HttpResponse("OK")
