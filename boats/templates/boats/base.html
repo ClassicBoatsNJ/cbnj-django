@@ -9,14 +9,14 @@
     <meta charset="utf-8">
     <title>ClassicBoatsNJ</title>
     {% block meta %}
-	<meta name="description" content="New Jersey's destination for classic boat sales and restoration.">  
-	<meta name="author" content="">
-	<meta name="google-site-verification" content="llUgnV3BRPvUwr82fYUilsyjRVnPE72-hX1syWf69Zs" />
+    <meta name="description" content="New Jersey's destination for classic boat sales and restoration.">  
+    <meta name="author" content="">
+    <meta name="google-site-verification" content="llUgnV3BRPvUwr82fYUilsyjRVnPE72-hX1syWf69Zs" />
     {% endblock %}
 
    <!-- Mobile Specific Metas
    ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- CSS
     ================================================== -->
@@ -26,7 +26,10 @@
 
    <!-- Script
    =================================================== -->
-	<script src="{% static 'boats/js/modernizr.js' %}"></script>
+    <script src="{% static 'boats/js/modernizr.js' %}"></script>
+    {% block recaptcha %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    {% endblock %}
 
    <!-- Favicons
 	=================================================== -->
