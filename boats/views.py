@@ -1,14 +1,30 @@
 from random import shuffle, sample
 
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.core.mail import send_mail
 
 from .models import Boat
 from .forms import ContactForm
+import requests as outbound_requests
 
 def index(request):
     if request.method == 'POST':
+        request.POST
+        recaptcha_data = {
+            'secret': settings.RECAPTCHA_SECRET,
+            'response': request.POST[u'g-recaptcha-response']
+            }
+        try:
+            recaptcha_api = outbound_requests.post(
+                "https://www.google.com/recaptcha/api/siteverify",
+                data=recaptcha_data
+                ).json()
+        except:
+            recaptcha_api = {'success': False}
+        if recaptcha_api['success']  != True:
+            return HttpResponse("reCaptcha error. Please try again.")
         form = ContactForm(request.POST)
         if form.is_valid():
             subject = "[CBNJ] Contact Form Info - %s" % form.cleaned_data['email']
@@ -26,14 +42,13 @@ def index(request):
             except:
                 return HttpResponse("Mail server error.<br />Please try again later.")
             return HttpResponse("OK")
-        else:
-            messages = []
-            for field in form:
-                for error in field.errors:
-                    messages.append(error)
-            messages[-1] += "<br />"
-            messages = "<br />\n".join(messages)
-            return HttpResponse(messages)
+        messages = []
+        for field in form:
+            for error in field.errors:
+                messages.append(error)
+        messages[-1] += "<br />"
+        messages = "<br />\n".join(messages)
+        return HttpResponse(messages)
 
     elif request.method == 'GET':
         form = ContactForm()
