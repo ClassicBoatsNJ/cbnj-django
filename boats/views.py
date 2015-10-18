@@ -9,6 +9,7 @@ from .models import Boat
 from .forms import ContactForm
 import requests as outbound_requests
 
+ALL_BOATS = [boat for boat in Boat.objects.all()]
 def index(request):
     if request.method == 'POST':
         request.POST
@@ -52,7 +53,7 @@ def index(request):
 
     elif request.method == 'GET':
         form = ContactForm()
-        shuffled_boats = [boat for boat in Boat.objects.all()]
+        shuffled_boats = ALL_BOATS
         shuffle(shuffled_boats)
         context = {
             'boats': shuffled_boats,
