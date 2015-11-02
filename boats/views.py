@@ -53,10 +53,8 @@ def index(request):
 
     elif request.method == 'GET':
         form = ContactForm()
-        shuffled_boats = ALL_BOATS
-        shuffle(shuffled_boats)
         context = {
-            'boats': shuffled_boats,
+            'boats': ALL_BOATS,
             'form': form
         }
         return render(request, 'boats/index.html', context)
