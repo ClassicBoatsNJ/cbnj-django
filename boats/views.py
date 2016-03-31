@@ -9,7 +9,7 @@ from .models import Boat
 from .forms import ContactForm
 import requests as outbound_requests
 
-ALL_BOATS = [boat for boat in Boat.objects.all()]
+ALL_BOATS = [boat for boat in Boat.objects.all().order_by("-created_time")]
 def index(request):
     if request.method == 'POST':
         request.POST
