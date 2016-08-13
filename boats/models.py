@@ -1,26 +1,25 @@
 from django.db import models
 
+
 class Boat(models.Model):
-
-    def __unicode__(self):
-        return "%s - %s" % (self.nice_name, self.subtitle)
-
     url_name = models.CharField(max_length=255)
     nice_name = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     post_text = models.TextField()
     main_image = models.ImageField()
 
+    def __unicode__(self):
+        return "%s - %s" % (self.nice_name, self.subtitle)
+
     def get_subtitle_list(self):
         return self.subtitle.split('/')
 
     def get_next(self):
         try:
-            next_object = Boat.objects.order_by('id').filter(id__gt=self.id)[0]
+            next_object = Boat.objects.filter(id__gt=self.id).order_by('id')[0]
         except:
             next_object = Boat.objects.order_by('id').first()
         return next_object
-
 
     def get_previous(self):
         try:
