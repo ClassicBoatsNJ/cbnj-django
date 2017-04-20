@@ -1,10 +1,4 @@
 (function($) {
-  $('img').load(function() {
-    $("#status").fadeOut("slow"); 
-    $("#preloader").delay(50).fadeOut("slow").remove();      
-
-  }) 
-
   if($("html").hasClass('ie8')) {
   	$("#hero").backstretch("images/hero-bg.jpg");  	
   	$("#page-title").backstretch("images/hero-bg.jpg");	
@@ -109,7 +103,7 @@
    /*----------------------------------------------------*/
   	/* Flexslider
   	/*----------------------------------------------------*/
-  $('img').load(function() {  		
+  $(function() {
 
     $('#hero-slider').flexslider({
 	  namespace: "flex-",
@@ -121,7 +115,9 @@
 	  slideshowSpeed: 7000,
 	  animationSpeed: 600,
 	  randomize: false
-	});	   
+	});
+    $("#status").fadeOut("slow");
+    $("#preloader").delay(50).fadeOut("slow").remove();
 
   });
 
