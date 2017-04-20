@@ -1,5 +1,5 @@
 (function($) {
-  $(window).load(function() {
+  $('img').load(function() {
     $("#status").fadeOut("slow"); 
     $("#preloader").delay(50).fadeOut("slow").remove();      
 
@@ -109,7 +109,7 @@
    /*----------------------------------------------------*/
   	/* Flexslider
   	/*----------------------------------------------------*/
-  $(window).load(function() {  		
+  $('img').load(function() {  		
 
     $('#hero-slider').flexslider({
 	  namespace: "flex-",
