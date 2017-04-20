@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^boats/(?P<boat_url>[^/]+)/$', views.boat, name='boat'),
+    url(r'^boats/(?P<boat_url>[^/]+)/$', views.boat_view, name='boat'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
